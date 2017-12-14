@@ -15,6 +15,13 @@ mongoose.connect(pathDB , { useMongoClient: true }, err => {
     }
     console.log("no")
     app.use(bodyParser.json())
+
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+        });
+
     app.get("/", (req, res) => {
         res.json("hi john")
     })
@@ -22,7 +29,7 @@ mongoose.connect(pathDB , { useMongoClient: true }, err => {
     app.use("/users" , user)
     app.use("/posts" , post)
     
-    app.listen(9999 , () => {
+    app.listen(9990 , () => {
         console.log("success")
     })
 
