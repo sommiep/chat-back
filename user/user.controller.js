@@ -18,3 +18,14 @@ exports.getAll = ((req , res , next) => {
         res.json(users)
     })
 })
+
+exports.get = ((req , res , next) => {
+    
+    User.find( {lastName : req.params.lastname},(err , user) => {
+        if(err){
+            return next(err)
+        }
+        res.json(user)
+    })
+})
+
