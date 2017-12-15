@@ -29,3 +29,14 @@ exports.get = ((req , res , next) => {
     })
 })
 
+exports.check= ((req , res , next) => {
+    const {username, password} = req.body
+    User.find( {userName : username, password: password},(err , users) => {
+        if(err){
+            return next(err)
+        }
+        console.log(users)
+        res.json(users)
+    })
+})
+
