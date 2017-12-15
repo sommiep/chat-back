@@ -6,7 +6,7 @@ const postSchema = new Schema({
   topic: String ,
   content: String,
   category: String,
-  date: String,
+  date: Date,
   time: String
 });
 
