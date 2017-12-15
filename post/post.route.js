@@ -10,6 +10,8 @@ router.get("/", post.getAll )
 
 router.get("/:category" , post.getCate )
 
+router.get("/:topic" , post.getTopic )
+
 module.exports = router;
 
 

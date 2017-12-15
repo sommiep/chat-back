@@ -28,3 +28,12 @@ exports.getCate = ((req , res , next) => {
         res.json(post)
     })
 })
+
+exports.getTopic = ((req , res , next) => {
+    Post.find( {topic : req.params.topic},(err , post) => {
+        if(err){
+            return next(err)
+        }
+        res.json(post)
+    })
+})
