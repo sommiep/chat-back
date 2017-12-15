@@ -18,3 +18,13 @@ exports.getAll = ((req , res , next) => {
         res.json(posts)
     })
 })
+
+exports.getCate = ((req , res , next) => {
+    //const {category} = req.body
+    Post.find( {category : req.params.category},(err , post) => {
+        if(err){
+            return next(err)
+        }
+        res.json(post)
+    })
+})

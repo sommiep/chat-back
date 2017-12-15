@@ -6,8 +6,7 @@ const postSchema = new Schema({
   topic: String ,
   content: String,
   category: String,
-  date: Date,
-  time: String
+  username: String
 });
 
 module.exports = mongoose.model("post" , postSchema )
