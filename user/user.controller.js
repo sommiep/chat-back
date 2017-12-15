@@ -40,3 +40,24 @@ exports.check= ((req , res , next) => {
     })
 })
 
+exports.checkUser= ((req , res , next) => {
+    const {username} = req.body
+    User.find( {userName : username},(err , users) => {
+        if(err){
+            return next(err)
+        }
+        console.log(users)
+        res.json(users)
+    })
+})
+
+exports.update= ((req , res , next) => {
+    const user = new User(req.body)
+    console.log(req.params._id)
+    User.findByIdAndUpdate( {_id : user._id}, user, (err , users) => {
+        if(err){
+            return next(err)
+        }
+        res.json(users)
+    })
+})
