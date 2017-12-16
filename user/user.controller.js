@@ -31,33 +31,11 @@ exports.get = ((req , res , next) => {
 
 exports.check= ((req , res , next) => {
     const {username, password} = req.body
-    User.find( {userName : username, password: password},(err , users) => {
+    User.find( {username : username, password: password},(err , users) => {
         if(err){
             return next(err)
         }
         console.log(users)
-        res.json(users)
-    })
-})
-
-exports.checkUser= ((req , res , next) => {
-    const {username} = req.body
-    User.find( {userName : username},(err , users) => {
-        if(err){
-            return next(err)
-        }
-        console.log(users)
-        res.json(users)
-    })
-})
-
-exports.update= ((req , res , next) => {
-    const user = new User(req.body)
-    console.log(req.params._id)
-    User.findByIdAndUpdate( {_id : user._id}, user, (err , users) => {
-        if(err){
-            return next(err)
-        }
         res.json(users)
     })
 })

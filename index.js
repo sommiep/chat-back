@@ -2,8 +2,9 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const user = require("./user/user.route")
-const post = require("./post/post.route")
-const pathDB = "mongodb://admin:1234@ds133776.mlab.com:33776/webdb"
+const room = require("./room/room.route")
+const chat = require("./chat/chat.route")
+const pathDB = "mongodb://admin:1234@ds141406.mlab.com:41406/chat"
 
 const app = express()
 
@@ -27,7 +28,8 @@ mongoose.connect(pathDB , { useMongoClient: true }, err => {
     })
 
     app.use("/users" , user)
-    app.use("/posts" , post)
+    app.use("/rooms" , room)
+    app.use("/chats" , chat)
     
     app.listen(9990 , () => {
         console.log("success")
